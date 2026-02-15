@@ -3,7 +3,6 @@
 <head>
 <title>Task 3 - Advanced Styling & JavaScript</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <style>
 body{
   font-family: Arial;
@@ -11,8 +10,6 @@ body{
   background:#0f2027;
   color:white;
 }
-
-/* NAVBAR */
 .navbar{
   background:#111;
   padding:15px;
@@ -20,22 +17,17 @@ body{
   font-size:22px;
   font-weight:bold;
 }
-
-/* MAIN GRID */
 .container{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:20px;
   padding:20px;
 }
-
-.card{
+  .card{
   background:#1b1b2f;
   padding:20px;
   border-radius:10px;
 }
-
-/* QUIZ */
 button{
   padding:10px;
   border:none;
@@ -44,42 +36,31 @@ button{
   cursor:pointer;
   margin-top:10px;
 }
-
 .option{
   background:#16213e;
   margin:8px 0;
   padding:10px;
   cursor:pointer;
 }
-
-/* API SECTION */
 #joke{
   margin-top:15px;
   font-size:18px;
   color:#00ffcc;
 }
-
-/* RESPONSIVE DESIGN */
 @media(max-width:900px){
   .container{
     grid-template-columns:1fr;
   }
 }
-
 @media(max-width:500px){
   body{font-size:14px}
   .navbar{font-size:18px}
 }
 </style>
 </head>
-
 <body>
-
 <div class="navbar">Advanced JavaScript Project</div>
-
 <div class="container">
-
-<!-- QUIZ SECTION -->
 <div class="card">
 <h2>Interactive Quiz</h2>
 <p id="question">Question will appear here</p>
@@ -87,27 +68,20 @@ button{
 <button onclick="nextQ()">Next Question</button>
 <p id="score"></p>
 </div>
-
-<!-- API SECTION -->
 <div class="card">
 <h2>Random Joke (API Fetch)</h2>
 <button onclick="getJoke()">Get Joke</button>
 <p id="joke">Click button to load joke...</p>
 </div>
-
 </div>
-
 <script>
-/* QUIZ DATA */
 let quiz=[
   {q:"HTML stands for?",a:["Hyper Text Markup Language","HighText Machine","Hyper Transfer"],c:0},
   {q:"Which is CSS used for?",a:["Structure","Styling","Database"],c:1},
   {q:"Which language for web interactivity?",a:["Python","Java","JavaScript"],c:2}
 ];
-
 let index=0;
 let score=0;
-
 function loadQ(){
  let q=quiz[index];
  document.getElementById("question").innerText=q.q;
@@ -118,7 +92,6 @@ function loadQ(){
  document.getElementById("options").innerHTML=opt;
 }
 loadQ();
-
 function check(i){
  if(i===quiz[index].c){
    score++;
@@ -127,7 +100,6 @@ function check(i){
    alert("Wrong!");
  }
 }
-
 function nextQ(){
  index++;
  if(index<quiz.length){
@@ -138,8 +110,6 @@ function nextQ(){
    document.getElementById("score").innerText="Your Score: "+score;
  }
 }
-
-/* API FETCH (JOKE API) */
 function getJoke(){
  fetch("https://official-joke-api.appspot.com/random_joke")
  .then(res=>res.json())
@@ -149,6 +119,5 @@ function getJoke(){
  });
 }
 </script>
-
 </body>
 </html>
